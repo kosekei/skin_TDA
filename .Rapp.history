@@ -1,0 +1,1240 @@
+162.5/20
+88/20
+for i in 1:20{#
+	df2$midlife[df2$midlife==i] <- -156.5 + 8.125 * (i-1)#
+	df2$lifetime[df2$lifetime==i] <- 4.4 * (i-1)#
+}
+for (i in 1:20){#
+	df2$midlife[df2$midlife==i] <- -156.5 + 8.125 * (i-1)#
+	df2$lifetime[df2$lifetime==i] <- 4.4 * (i-1)#
+}
+df2
+df_dim0 <- df2[df2["dim"]=="comp",]#
+df_dim1 <- df2[df2["dim"]=="hole",]#
+#
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(0, 20) + ylim(0,20)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/0dim_importance.pdf")#
+g0#
+dev.off()#
+#
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(0, 20) + ylim(0,20)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_importance.pdf")#
+g1#
+dev.off()
+df2 <- cbind(df1,df[,2])#
+colnames(df2) <- c("dim","midlife","lifetime","importance")#
+df2$importance <- log(df2$importance)#
+#
+cutoff <- function(x){#
+  if (x < -10){#
+    return(-10)#
+  } else {#
+    return(x)#
+  }#
+}#
+df2$importance <- mapply(df2$importance, FUN=cutoff)#
+#
+df2$midlife <- as.numeric(as.character(df2$midlife))+1#
+df2$lifetime <- as.numeric(as.character(df2$lifetime))#
+#
+for (i in 1:20){#
+	df2$midlife[df2$midlife==i] <- -156.5 + 8.125 * (i-1)#
+	df2$lifetime[df2$lifetime==i] <- 4.4 * (i-1)#
+}#
+#
+df_dim0 <- df2[df2["dim"]=="comp",]#
+df_dim1 <- df2[df2["dim"]=="hole",]#
+#
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(0, 20) + ylim(0,20)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/0dim_importance.pdf")#
+g0#
+dev.off()#
+#
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(0, 20) + ylim(0,20)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_importance.pdf")#
+g1#
+dev.off()
+36/20
+27.5+16
+(27.5+16)/20
+df2 <- cbind(df1,df[,2])#
+colnames(df2) <- c("dim","midlife","lifetime","importance")#
+df2$importance <- log(df2$importance)#
+#
+cutoff <- function(x){#
+  if (x < -10){#
+    return(-10)#
+  } else {#
+    return(x)#
+  }#
+}#
+df2$importance <- mapply(df2$importance, FUN=cutoff)#
+#
+df2$midlife <- as.numeric(as.character(df2$midlife))+1#
+df2$lifetime <- as.numeric(as.character(df2$lifetime))#
+#
+df_dim0 <- df2[df2["dim"]=="comp",]#
+for (i in 1:20){#
+	df_dim0$midlife[df_dim0$midlife==i] <- -156.5 + 8.125 * (i-1)#
+	df_dim0$lifetime[df_dim0$lifetime==i] <- 4.4 * (i-1)#
+}#
+#
+df_dim1 <- df2[df2["dim"]=="hole",]#
+for (i in 1:20){#
+	df_dim1$midlife[df_dim1$midlife==i] <- -16 + 2.175 * (i-1)#
+	df_dim1$lifetime[df_dim1$lifetime==i] <- 1.8 * (i-1)#
+}#
+#
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/0dim_importance.pdf")#
+g0#
+dev.off()#
+#
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_importance.pdf")#
+g1#
+dev.off()
+g0
+g1
+df_dim1
+df2 <- cbind(df1,df[,2])#
+colnames(df2) <- c("dim","midlife","lifetime","importance")#
+df2$importance <- log(df2$importance)#
+#
+cutoff <- function(x){#
+  if (x < -10){#
+    return(-10)#
+  } else {#
+    return(x)#
+  }#
+}#
+df2$importance <- mapply(df2$importance, FUN=cutoff)#
+#
+df2$midlife <- as.numeric(as.character(df2$midlife))+1#
+df2$lifetime <- as.numeric(as.character(df2$lifetime))#
+#
+df_dim0 <- df2[df2["dim"]=="comp",]#
+for (i in 1:20){#
+	df_dim0$midlife[df_dim0$midlife==i] <- -156.5 + 8.125 * (i-1)#
+	df_dim0$lifetime[df_dim0$lifetime==i] <- 4.4 * (i-1)#
+}#
+#
+df_dim1 <- df2[df2["dim"]=="hole",]#
+for (i in 1:20){#
+	df_dim1$midlife[df_dim1$midlife==i] <- -16 + 2.175 * (i-1)#
+	df_dim1$lifetime[df_dim1$lifetime==i] <- 1.8 * (i-1)#
+}#
+#
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/0dim_importance.pdf")#
+g0#
+dev.off()#
+#
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_importance.pdf")#
+g1#
+dev.off()
+g1
+g0
+df_dim1 <- df2[df2["dim"]=="hole",]#
+for (i in 1:20){#
+	df_dim1$midlife[df_dim1$midlife==i] <- -16 + 2.175 * (i-1)#
+	df_dim1$lifetime[df_dim1$lifetime==i] <- 1.8 * (i)#
+}
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_importance.pdf")#
+g1#
+dev.off()
+g1
+df_dim1 <- df2[df2["dim"]=="hole",]
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + #xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_importance.pdf")#
+g1#
+dev.off()
+g1
+df_dim1 <- df2[df2["dim"]=="hole",]#
+for (i in 1:20){#
+	df_dim1$midlife[df_dim1$midlife==i] <- -16 + 2.175 * (i-1)#
+	df_dim1$lifetime[df_dim1$lifetime==i] <- 2 * (i)#
+}
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + #xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_importance.pdf")#
+g1#
+dev.off()
+g1
+df_dim1 <- df2[df2["dim"]=="hole",]#
+for (i in 1:20){#
+	df_dim1$midlife[df_dim1$midlife==i] <- -16 + 2.175 * (i-1)#
+	df_dim1$lifetime[df_dim1$lifetime==i] <- 1.8 * (i-1)#
+}
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + #xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_importance.pdf")#
+g1#
+dev.off()
+g1
+df_dim1 <- df2[df2["dim"]=="hole",]
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + #xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g1
+df_dim1 <- df2[df2["dim"]=="hole",]#
+for (i in 1:20){#
+	df_dim1$midlife[df_dim1$midlife==i] <- -16 + 2.175 * (i-1)#
+	df_dim1$lifetime[df_dim1$lifetime==i] <- 3 * (i-1)#
+}
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + #xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g1
+df_dim1
+df_dim1 <- df2[df2["dim"]=="hole",]#
+for (i in 1:20){#
+	df_dim1$midlife[df_dim1$midlife==i] <- -16 + 2.175 * (i-1)#
+#	df_dim1$lifetime[df_dim1$lifetime==i] <- 1.8 * (i-1)#
+}
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + #xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g1
+df_dim1$lifetime[
+df_dim1$lifetime
+hist(df_dim1$lifetime)
+table(df_dim1$lifetime)
+df_dim1 <- df2[df2["dim"]=="hole",]#
+for (i in 1:20){#
+	df_dim1$midlife[df_dim1$midlife==i] <- -16 + 2.175 * (i-1)#
+	df_dim1$lifetime[df_dim1$lifetime==i] <- 1.8 * (i-1)#
+}
+table(df_dim1$lifetime)
+df_dim1 <- df2[df2["dim"]=="hole",]
+df_dim1$lifetime==8
+table(df_dim1$lifetime==8)
+i=8
+table(df_dim1$lifetime==9)
+i=9
+df_dim1 <- df2[df2["dim"]=="hole",]
+df_dim1$lifetime
+df_dim1 <- df2[df2["dim"]=="hole",]#
+for (i in 1:20){#
+	df_dim1$midlife[df_dim1$midlife==i] <- -16 + 2.175 * (i-1)#
+	df_dim1$lifetime[df_dim1$lifetime==(21-i)] <- 1.8 * (20-i)#
+}
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/0dim_importance.pdf")#
+g0#
+dev.off()#
+#
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + #xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_importance.pdf")#
+g1#
+dev.off()
+g0
+g1
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_importance.pdf")#
+g1#
+dev.off()
+g1
+df2$importance
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.5))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.5))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g1
+g0
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g1
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/0dim_importance.pdf")#
+g0#
+dev.off()#
+#
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_importance.pdf")#
+g1#
+dev.off()
+df2$importance
+head(df2)
+rm(list=ls())#
+#
+library(TDA)#
+library(ggplot2)#
+library(ggExtra)#
+library(MASS)#
+library(dplyr)#
+library(tidyr)#
+library(viridis)#
+library(akima)#
+library(gridExtra)#
+#
+get_density <- function(x, y, n = 100) {#
+  dens <- MASS::kde2d(x = x, y = y, n = n)#
+  ix <- findInterval(x, dens$x)#
+  iy <- findInterval(y, dens$y)#
+  ii <- cbind(ix, iy)#
+  return(dens$z[ii])#
+}#
+#
+filename <- "~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/hom_bw_0_0_intermediate/D-051-1_0_0_binary_diag0.txt"#
+#filename <- "~/Dropbox/KOSE2019/level4_10_rep5/D-110-5_coordinate.txt"
+df <- read.table(filename, sep=",")
+df
+df <- read.table(filename, sep="\t")
+head(df)
+df <- read.table(filename, sep="\t",header=T)
+head(df)
+get_density
+filename <- "~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/hom_bw_0_0_intermediate/D-051-1_0_0_binary_diag0.txt"#
+#filename <- "~/Dropbox/KOSE2019/level4_10_rep5/D-110-5_coordinate.txt"#
+#
+D_zero <- read.table(filename, sep="\t",header=T)
+head(D_zero)
+D_zero$density <- get_density(D_zero$midlife, D_zero$lifetime)
+D_zero
+head(D_zero)
+g0 <- ggplot() + geom_point(data=D_zero , aes(x=midlife, y=lifetime, color = density), size=1) + #
+ scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+  labs(x="Death", y="Birth") +#
+  geom_abline(intercept=0,slope=1)　+ coord_fixed(ratio=1) + #
+  xlim(-17, -11) + ylim(-17,-11) +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=16, family="Arial"))
+g0
+g0 <- ggplot() + geom_point(data=D_zero , aes(x=midlife, y=lifetime, color = density), size=1) + #
+ scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+  labs(x="midlife", y="lifetime") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=16, family="Arial"))
+g0
+filename0 <- "~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/hom_bw_0_0_intermediate/D-051-1_0_0_binary_diag0.txt"#
+filename1 <- "~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/hom_bw_0_0_intermediate/D-051-1_0_0_binary_diag1.txt"#
+#
+D_zero <- read.table(filename0, sep="\t",header=T)#
+D_one <- read.table(filename1, sep="\t",header=T)
+dim(D_zero)
+D_zero$density <- get_density(D_zero$midlife, D_zero$lifetime, h =1)
+get_density <- function(x, y, h, n = 100) {#
+  dens <- MASS::kde2d(x = x, y = y, h=h, n = n)#
+  ix <- findInterval(x, dens$x)#
+  iy <- findInterval(y, dens$y)#
+  ii <- cbind(ix, iy)#
+  return(dens$z[ii])#
+}
+D_zero$density <- get_density(D_zero$midlife, D_zero$lifetime, h=1)
+head(D_zero)
+D_zero$density <- get_density(D_zero$midlife, D_zero$lifetime, h=10)
+head(D_zero)
+D_zero$density <- get_density(D_zero$midlife, D_zero$lifetime)
+head(D_zero)
+filename0 <- "~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/hom_bw_0_0_intermediate/D-051-1_0_0_binary_diag0.txt"#
+filename1 <- "~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/hom_bw_0_0_intermediate/D-051-1_0_0_binary_diag1.txt"#
+#
+D_zero <- read.table(filename0, sep="\t",header=T)#
+D_zero$density <- get_density(D_zero$midlife, D_zero$lifetime)#
+#
+D_one <- read.table(filename1, sep="\t",header=T)#
+D_one$density <- get_density(D_one$midlife, D_one$lifetime)
+g0 <- ggplot() + geom_point(data=D_zero , aes(x=midlife, y=lifetime, color = density), size=1) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+ scale_color_distiller(palette='Spectral') +#
+  labs(x="midlife", y="lifetime") +#
+  theme(panel.border = element_rect(fill = NA, size=3), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=16, family="Arial"))
+g0
+g0 <- ggplot() + geom_point(data=D_zero , aes(x=midlife, y=lifetime, color = density), size=5) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+ scale_color_distiller(palette='Spectral') +#
+  labs(x="midlife", y="lifetime") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=16, family="Arial"))
+g0
+g1 <- ggplot() + geom_point(data=D_one , aes(x=midlife, y=lifetime, color = density), size=1) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+ scale_color_distiller(palette='Spectral') +#
+  labs(x="midlife", y="lifetime") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+    panel.background = element_rect(fill = NA,color = NA), #
+    text=element_text(size=16, family="Arial"))
+g1
+D_zero <- read.table(filename0, sep="\t",header=T)#
+D_zero$density <- get_density(D_zero$midlife, D_zero$lifetime)#
+D_zero$density <- log(D_zero$density)#
+D_one <- read.table(filename1, sep="\t",header=T)#
+D_one$density <- get_density(D_one$midlife, D_one$lifetime)#
+D_one$density <- log(D_one$density)#
+g0 <- ggplot() + geom_point(data=D_zero , aes(x=midlife, y=lifetime, color = density), size=10, alpha=0.4) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+ scale_color_distiller(palette='Spectral') +#
+  labs(x="midlife", y="lifetime") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=16, family="Arial"))
+g0
+g0 <- ggplot() + geom_point(data=D_zero , aes(x=midlife, y=lifetime, color = density), size=3) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+ scale_color_distiller(palette='Spectral') +#
+  labs(x="midlife", y="lifetime") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=16, family="Arial"))
+g0
+g1 <- ggplot() + geom_point(data=D_one , aes(x=midlife, y=lifetime, color = density), size=3) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+ scale_color_distiller(palette='Spectral') +#
+  labs(x="midlife", y="lifetime") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+    panel.background = element_rect(fill = NA,color = NA), #
+    text=element_text(size=16, family="Arial"))
+g1
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/D-051-1_binary_perdiag0.pdf")#
+g0#
+dev.off()#
+#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/D-051-1_binary_perdiag1.pdf")#
+g1#
+dev.off()
+rm(list=ls())#
+#
+library(TDA)#
+library(ggplot2)#
+library(ggExtra)#
+library(MASS)#
+library(dplyr)#
+library(tidyr)#
+library(viridis)#
+library(akima)#
+library(gridExtra)#
+#
+get_density <- function(x, y, h, n = 100) {#
+  dens <- MASS::kde2d(x = x, y = y, h=h, n = n)#
+  ix <- findInterval(x, dens$x)#
+  iy <- findInterval(y, dens$y)#
+  ii <- cbind(ix, iy)#
+  return(dens$z[ii])#
+}#
+#
+filename0 <- "~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/hom_bw_0_0_intermediate/A-051-1_0_0_binary_diag0.txt"#
+filename1 <- "~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/hom_bw_0_0_intermediate/A-051-1_0_0_binary_diag1.txt"#
+#
+D_zero <- read.table(filename0, sep="\t",header=T)#
+D_zero$density <- get_density(D_zero$midlife, D_zero$lifetime)#
+D_zero$density <- log(D_zero$density)#
+D_one <- read.table(filename1, sep="\t",header=T)#
+D_one$density <- get_density(D_one$midlife, D_one$lifetime)#
+D_one$density <- log(D_one$density)#
+g0 <- ggplot() + geom_point(data=D_zero , aes(x=midlife, y=lifetime, color = density), size=3) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+ scale_color_distiller(palette='Spectral') +#
+  labs(x="midlife", y="lifetime") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=16, family="Arial"))#
+g1 <- ggplot() + geom_point(data=D_one , aes(x=midlife, y=lifetime, color = density), size=3) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+ scale_color_distiller(palette='Spectral') +#
+  labs(x="midlife", y="lifetime") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+    panel.background = element_rect(fill = NA,color = NA), #
+    text=element_text(size=16, family="Arial"))
+g0
+g1
+89/20
+rm(list=ls())#
+#
+library(TDA)#
+library(ggplot2)#
+library(ggExtra)#
+library(MASS)#
+library(dplyr)#
+library(tidyr)#
+library(viridis)#
+library(akima)#
+library(gridExtra)#
+#
+filename0 <- "~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/0dim_all.txt"#
+filename1 <- "~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_all.txt"
+D_zero <- read.table(filename0, sep="\t",header=T)
+head(D_zero)
+D_one <- read.table(filename1, sep="\t",header=T)
+g0 <- ggplot() + geom_point(data=D_zero , aes(x=midlife, y=lifetime), size=3) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+  labs(x="midlife", y="lifetime") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=16, family="Arial"))#
+g1 <- ggplot() + geom_point(data=D_one , aes(x=midlife, y=lifetime), size=3) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+  labs(x="midlife", y="lifetime") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+    panel.background = element_rect(fill = NA,color = NA), #
+    text=element_text(size=16, family="Arial"))
+g0
+g1
+g0
+g1
+g0
+g1
+g0
+g1
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/0dim_all.pdf")#
+g0#
+dev.off()#
+#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_all.pdf")#
+g1#
+dev.off()
+D_zero
+D_zero$birth <- (D_zero$midlife * 2 - D_zero$lifetime)/2#
+D_zero$death <- (D_zero$midlife * 2 + D_zero$lifetime)/2
+filename0 <- "~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/0dim_all.txt"#
+filename1 <- "~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_all.txt"#
+#
+D_zero <- read.table(filename0, sep="\t",header=T)#
+D_zero$birth <- (D_zero$midlife * 2 - D_zero$lifetime)/2#
+D_zero$death <- (D_zero$midlife * 2 + D_zero$lifetime)/2#
+#
+D_one <- read.table(filename1, sep="\t",header=T)#
+D_one$birth <- (D_one$midlife * 2 - D_one$lifetime)/2#
+D_one$death <- (D_one$midlife * 2 + D_one$lifetime)/2
+g0_2 <- ggplot() + geom_point(data=D_zero , aes(x=birth, y=death), size=3) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+  labs(x="midlife", y="lifetime") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=16, family="Arial"))#
+g1_2 <- ggplot() + geom_point(data=D_one , aes(x=birth, y=death), size=3) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+  labs(x="midlife", y="lifetime") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+    panel.background = element_rect(fill = NA,color = NA), #
+    text=element_text(size=16, family="Arial"))
+g0_2
+g1_2
+g0_2 <- ggplot() + geom_point(data=D_zero , aes(x=birth, y=death), size=3) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+  labs(x="Birth", y="Death") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=16, family="Arial"))#
+g1_2 <- ggplot() + geom_point(data=D_one , aes(x=birth, y=death), size=3) + #
+ #scale_color_distiller(palette='Spectral', limits = c(0,5)) +#
+  labs(x="Birth", y="Death") +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+    panel.background = element_rect(fill = NA,color = NA), #
+    text=element_text(size=16, family="Arial"))
+g1_2
+g0_2
+g1_2
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/0dim_bd_all.pdf")#
+g0_2#
+dev.off()#
+#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_bd_all.pdf")#
+g1_2#
+dev.off()
+library(ggplot2)#
+library(ggExtra)#
+library(MASS)#
+library(dplyr)#
+library(tidyr)#
+library(TDA)#
+library(viridis)#
+library(akima)#
+library(caret)#
+#
+df = read.table("~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/homcloud_bw/variable_importance_grid.txt", header=F)#
+#
+name <- as.character(df[,1])#
+d <- strsplit(name,"_")#
+df1 <- data.frame()#
+for(i in 1:length(d)){#
+	row <- d[[i]]#
+  row2 <- as.data.frame(row)#
+  df1 <- rbind(df1,t(row2))#
+}#
+rownames(df1) <- 1:nrow(df1)#
+df2 <- cbind(df1,df[,2])#
+colnames(df2) <- c("dim","midlife","lifetime","importance")#
+df2$importance <- log(df2$importance)
+df2
+head(df2)
+cutoff <- function(x){#
+  if (x < -10){#
+    return(-10)#
+  } else {#
+    return(x)#
+  }#
+}#
+df2$importance <- mapply(df2$importance, FUN=cutoff)#
+#
+df2$midlife <- as.numeric(as.character(df2$midlife))+1#
+df2$lifetime <- as.numeric(as.character(df2$lifetime))
+head(df2)
+-156.5 + 8.125 * 19
+df_dim0 <- df2[df2["dim"]=="comp",]#
+for (i in 1:20){#
+	df_dim0$midlife[df_dim0$midlife==i] <- -156.5 + 8.125 * (i-1)#
+	df_dim0$lifetime[df_dim0$lifetime==i] <- 4.45 * (i-1)#
+}#
+#
+df_dim1 <- df2[df2["dim"]=="hole",]#
+for (i in 1:20){#
+	df_dim1$midlife[df_dim1$midlife==i] <- -16 + 2.175 * (i-1)#
+	df_dim1$lifetime[df_dim1$lifetime==(21-i)] <- 1.8 * (20-i)#
+}
+head(df_dim0)
+df_dim0
+df = read.table("~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/homcloud_bw/variable_importance_grid.txt", header=F)#
+#
+name <- as.character(df[,1])#
+d <- strsplit(name,"_")#
+df1 <- data.frame()#
+for(i in 1:length(d)){#
+	row <- d[[i]]#
+  row2 <- as.data.frame(row)#
+  df1 <- rbind(df1,t(row2))#
+}#
+rownames(df1) <- 1:nrow(df1)#
+df2 <- cbind(df1,df[,2])#
+colnames(df2) <- c("dim","midlife","lifetime","importance")#
+df2$importance <- log(df2$importance)#
+#
+cutoff <- function(x){#
+  if (x < -10){#
+    return(-10)#
+  } else {#
+    return(x)#
+  }#
+}#
+#df2$importance <- mapply(df2$importance, FUN=cutoff)#
+#
+df2$midlife <- as.numeric(as.character(df2$midlife))+1#
+df2$lifetime <- as.numeric(as.character(df2$lifetime))#
+#
+df_dim0 <- df2[df2["dim"]=="comp",]#
+for (i in 1:20){#
+	df_dim0$midlife[df_dim0$midlife==i] <- -156.5 + 8.125 * (i-1)#
+	df_dim0$lifetime[df_dim0$lifetime==i] <- 4.45 * (i-1)#
+}#
+#
+df_dim1 <- df2[df2["dim"]=="hole",]#
+for (i in 1:20){#
+	df_dim1$midlife[df_dim1$midlife==i] <- -16 + 2.175 * (i-1)#
+	df_dim1$lifetime[df_dim1$lifetime==(21-i)] <- 1.8 * (20-i)#
+}
+df_dim0
+write.table(df_dim0,file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/important_region_dim0.txt",sep="\t",quote=FALSE)
+?write.table
+write.table(df_dim0,file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/important_region_dim0.txt",sep="\t",quote=FALSE, row.names = F)
+write.table(df_dim1,file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/important_region_dim1.txt",sep="\t",quote=FALSE, row.names = F)
+head(df2)
+head(df_dim0)
+library(ggplot2)#
+library(ggExtra)#
+library(MASS)#
+library(dplyr)#
+library(tidyr)#
+library(TDA)#
+library(viridis)#
+library(akima)#
+library(caret)#
+#
+df = read.table("~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/homcloud_bw/variable_importance_grid.txt", header=F)#
+#
+name <- as.character(df[,1])#
+d <- strsplit(name,"_")#
+df1 <- data.frame()#
+for(i in 1:length(d)){#
+	row <- d[[i]]#
+  row2 <- as.data.frame(row)#
+  df1 <- rbind(df1,t(row2))#
+}#
+rownames(df1) <- 1:nrow(df1)#
+df2 <- cbind(df1,df[,2])#
+colnames(df2) <- c("dim","midlife","lifetime","importance")#
+df2$importance <- log(df2$importance)#
+#
+cutoff <- function(x){#
+  if (x < -10){#
+    return(-10)#
+  } else {#
+    return(x)#
+  }#
+}#
+#df2$importance <- mapply(df2$importance, FUN=cutoff)#
+#
+df2$midlife <- as.numeric(as.character(df2$midlife))+1#
+df2$lifetime <- as.numeric(as.character(df2$lifetime))
+df2$importance <- mapply(df2$importance, FUN=cutoff)
+df_dim0 <- df2[df2["dim"]=="comp",]#
+for (i in 1:20){#
+	df_dim0$midlife[df_dim0$midlife==i] <- -156.5 + 8.125 * (i-1)#
+	df_dim0$lifetime[df_dim0$lifetime==i] <- 4.45 * (i-1)#
+}
+df_dim1 <- df2[df2["dim"]=="hole",]#
+for (i in 1:20){#
+	df_dim1$midlife[df_dim1$midlife==i] <- -16 + 2.175 * (i-1)#
+	df_dim1$lifetime[df_dim1$lifetime==(21-i)] <- 1.8 * (20-i)#
+}
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+df_dim0
+g0
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral')+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,0))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 20.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,10))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+df_dim0
+head(df_dim0)
+df_dim0[1,4]
+df_dim0[2,4]
+df_dim0[2,4]<- -2.663585
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+df_dim0 <- df2[df2["dim"]=="comp",]#
+for (i in 1:20){#
+	df_dim0$midlife[df_dim0$midlife==i] <- -156.5 + 8.125 * (i-1)#
+	df_dim0$lifetime[df_dim0$lifetime==i] <- 4.45 * (i-1)#
+}
+df_dim0
+head(df_dim0)
+df_dim0[1,4]
+df_dim0[1,4] <- -2.66
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+df_dim0[1,4] <- 5
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+df_dim0[1,4] <- 100
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(0,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral')+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+head(df_dim0)
+df_dim0 <- df2[df2["dim"]=="comp",]#
+for (i in 1:20){#
+	df_dim0$midlife[df_dim0$midlife==i] <- -156.5 + 8.125 * (i-1)#
+	df_dim0$lifetime[df_dim0$lifetime==i] <- 4.45 * (i-1)#
+}
+head(df_dim0)
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(-1,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(-10,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(-10,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-5,-2.6))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(-5,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g1
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-16, 27.5) + ylim(-5,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g1
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-16, 27.5) + ylim(0,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g1
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-16, 27.5) + ylim(-2,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g1
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(-5,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-10,-2.6))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))
+g0
+library(ggplot2)#
+library(ggExtra)#
+library(MASS)#
+library(dplyr)#
+library(tidyr)#
+library(TDA)#
+library(viridis)#
+library(akima)#
+library(caret)#
+#
+df = read.table("~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/homcloud_bw/variable_importance_grid.txt", header=F)#
+#
+name <- as.character(df[,1])#
+d <- strsplit(name,"_")#
+df1 <- data.frame()#
+for(i in 1:length(d)){#
+	row <- d[[i]]#
+  row2 <- as.data.frame(row)#
+  df1 <- rbind(df1,t(row2))#
+}#
+rownames(df1) <- 1:nrow(df1)#
+df2 <- cbind(df1,df[,2])#
+colnames(df2) <- c("dim","midlife","lifetime","importance")#
+df2$importance <- log(df2$importance)#
+#
+cutoff <- function(x){#
+  if (x < -15){#
+    return(-15)#
+  } else {#
+    return(x)#
+  }#
+}#
+df2$importance <- mapply(df2$importance, FUN=cutoff)#
+#
+df2$midlife <- as.numeric(as.character(df2$midlife))+1#
+df2$lifetime <- as.numeric(as.character(df2$lifetime))#
+#
+df_dim0 <- df2[df2["dim"]=="comp",]#
+for (i in 1:20){#
+	df_dim0$midlife[df_dim0$midlife==i] <- -156.5 + 8.125 * (i-1)#
+	df_dim0$lifetime[df_dim0$lifetime==i] <- 4.45 * (i-1)#
+}#
+#write.table(df_dim0,file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/important_region_dim0.txt",sep="\t",quote=FALSE, row.names = F)#
+#
+df_dim1 <- df2[df2["dim"]=="hole",]#
+for (i in 1:20){#
+	df_dim1$midlife[df_dim1$midlife==i] <- -16 + 2.175 * (i-1)#
+	df_dim1$lifetime[df_dim1$lifetime==(21-i)] <- 1.8 * (20-i)#
+}#
+#write.table(df_dim1,file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/important_region_dim1.txt",sep="\t",quote=FALSE, row.names = F)#
+#
+g0 <- ggplot(df_dim0, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-156.5, 6.0) + ylim(-5,89)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-15,-2.6))+#
+labs(title="Importance of 0-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/0dim_importance.pdf")#
+g0#
+dev.off()#
+#
+g1 <- ggplot(df_dim1, aes(x=midlife, y=lifetime, fill=importance)) + xlim(-16, 27.5) + ylim(-2,36)+#
+geom_tile()+#
+scale_fill_distiller(palette='Spectral', limits = c(-15,-2.6))+#
+labs(title="Importance of 1-dim features", x="Mid-life", y="Life-time", fill="Importance") +#
+theme(panel.border = element_rect(fill = NA, size=1), panel.background = element_rect(fill = NA,color = NA), text=element_text(size=25, family="Arial"))#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/1dim_importance.pdf")#
+g1#
+dev.off()
+rm(list=ls())#
+#
+library(caret)#
+library(ggplot2)#
+library(dplyr)#
+#
+obs_pred4 <- read.table("/~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/moisture/obs_pred_binary_3_5_spread1_PCA_corneo.txt",header=T)#
+obs_pred4["sex"] <- lapply(obs_pred4["sex"], gsub, pattern="0", replacement = "M")#
+obs_pred4["sex"] <- lapply(obs_pred4["sex"], gsub, pattern="1", replacement = "F")#
+dA <- obs_pred4[obs_pred4$ID=="D-051" & obs_pred4$season=="S",]#
+dB <- obs_pred4[obs_pred4$ID=="D-055" & obs_pred4$season=="S",]#
+dC <- obs_pred4[obs_pred4$ID=="D-110" & obs_pred4$season=="S",]#
+dD <- obs_pred4[obs_pred4$ID=="D-096" & obs_pred4$season=="W",]#
+dE <- obs_pred4[obs_pred4$ID=="D-022" & obs_pred4$season=="S",]#
+dF <- obs_pred4[obs_pred4$ID=="A-076" & obs_pred4$season=="W",]#
+d1 <- rbind(dA, dB, dC, dD, dE, dF)#
+d1$sym <- c("A", "B", "C", "D", "E", "F")#
+g <- ggplot() + #
+  geom_point(data=obs_pred4 , aes(x=pred, y=obs, color=sex), size=2) +#
+  xlim(0,35) + ylim(0,35) +#
+  labs(title="",x="Predicted TEWL", y="Observed TEWL") +#
+#  scale_color_hue(name = "Location", labels = c(A = "Akita", T ="Tokyo"), guide=TRUE ) +#
+ scale_color_hue(name = "sex", labels = c(F = "F", M ="M")) +#
+#  scale_shape_discrete(name = "Sex", labels = c( W ="Female",M = "Male"), guide=guide_legend(reverse=TRUE) ) +#
+#  scale_shape_discrete(name = "Season", labels = c(S="S", W="W" ), guide=TRUE ) +#
+#  scale_shape_discrete(name = "Location", labels = c(A = "Akita", T ="Tokyo")) +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=25, family="Arial")) +#
+  geom_abline(intercept=0,slope=1)　+ coord_fixed(ratio=1)#
+g2 <-g + geom_text(data=d1 , aes(x=pred, y=obs, label=sym), size=6)
+rm(list=ls())#
+#
+library(caret)#
+library(ggplot2)#
+library(dplyr)#
+#
+obs_pred4 <- read.table("/~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/moisture/obs_pred_binary_3_5_spread1_PCA_corneo.txt",header=T)#
+obs_pred4["sex"] <- lapply(obs_pred4["sex"], gsub, pattern="0", replacement = "M")#
+obs_pred4["sex"] <- lapply(obs_pred4["sex"], gsub, pattern="1", replacement = "F")
+rm(list=ls())#
+#
+library(caret)#
+library(ggplot2)#
+library(dplyr)#
+#
+obs_pred4 <- read.table("~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/moisture/obs_pred_binary_3_5_spread1_PCA_corneo.txt",header=T)#
+obs_pred4["sex"] <- lapply(obs_pred4["sex"], gsub, pattern="0", replacement = "M")#
+obs_pred4["sex"] <- lapply(obs_pred4["sex"], gsub, pattern="1", replacement = "F")#
+dA <- obs_pred4[obs_pred4$ID=="D-051" & obs_pred4$season=="S",]#
+dB <- obs_pred4[obs_pred4$ID=="D-055" & obs_pred4$season=="S",]#
+dC <- obs_pred4[obs_pred4$ID=="D-110" & obs_pred4$season=="S",]#
+dD <- obs_pred4[obs_pred4$ID=="D-096" & obs_pred4$season=="W",]#
+dE <- obs_pred4[obs_pred4$ID=="D-022" & obs_pred4$season=="S",]#
+dF <- obs_pred4[obs_pred4$ID=="A-076" & obs_pred4$season=="W",]#
+d1 <- rbind(dA, dB, dC, dD, dE, dF)#
+d1$sym <- c("A", "B", "C", "D", "E", "F")#
+g <- ggplot() + #
+  geom_point(data=obs_pred4 , aes(x=pred, y=obs, color=sex), size=2) +#
+  xlim(0,35) + ylim(0,35) +#
+  labs(title="",x="Predicted TEWL", y="Observed TEWL") +#
+#  scale_color_hue(name = "Location", labels = c(A = "Akita", T ="Tokyo"), guide=TRUE ) +#
+ scale_color_hue(name = "sex", labels = c(F = "F", M ="M")) +#
+#  scale_shape_discrete(name = "Sex", labels = c( W ="Female",M = "Male"), guide=guide_legend(reverse=TRUE) ) +#
+#  scale_shape_discrete(name = "Season", labels = c(S="S", W="W" ), guide=TRUE ) +#
+#  scale_shape_discrete(name = "Location", labels = c(A = "Akita", T ="Tokyo")) +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=25, family="Arial")) +#
+  geom_abline(intercept=0,slope=1)　+ coord_fixed(ratio=1)#
+g2 <-g + geom_text(data=d1 , aes(x=pred, y=obs, label=sym), size=6)
+g2
+g <- ggplot() + #
+  geom_point(data=obs_pred4 , aes(x=pred, y=obs, color=sex), size=2) +#
+#  xlim(0,35) + ylim(0,35) +#
+  labs(title="",x="Predicted TEWL", y="Observed TEWL") +#
+#  scale_color_hue(name = "Location", labels = c(A = "Akita", T ="Tokyo"), guide=TRUE ) +#
+ scale_color_hue(name = "sex", labels = c(F = "F", M ="M")) +#
+#  scale_shape_discrete(name = "Sex", labels = c( W ="Female",M = "Male"), guide=guide_legend(reverse=TRUE) ) +#
+#  scale_shape_discrete(name = "Season", labels = c(S="S", W="W" ), guide=TRUE ) +#
+#  scale_shape_discrete(name = "Location", labels = c(A = "Akita", T ="Tokyo")) +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=25, family="Arial")) +#
+  geom_abline(intercept=0,slope=1)　+ coord_fixed(ratio=1)#
+g2 <-g + geom_text(data=d1 , aes(x=pred, y=obs, label=sym), size=6)
+g2
+g <- ggplot() + #
+  geom_point(data=obs_pred4 , aes(x=pred, y=obs, color=sex), size=2) +#
+  xlim(0,80) + ylim(0,80) +#
+  labs(title="",x="Predicted TEWL", y="Observed TEWL") +#
+#  scale_color_hue(name = "Location", labels = c(A = "Akita", T ="Tokyo"), guide=TRUE ) +#
+ scale_color_hue(name = "sex", labels = c(F = "F", M ="M")) +#
+#  scale_shape_discrete(name = "Sex", labels = c( W ="Female",M = "Male"), guide=guide_legend(reverse=TRUE) ) +#
+#  scale_shape_discrete(name = "Season", labels = c(S="S", W="W" ), guide=TRUE ) +#
+#  scale_shape_discrete(name = "Location", labels = c(A = "Akita", T ="Tokyo")) +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=25, family="Arial")) +#
+  geom_abline(intercept=0,slope=1)　+ coord_fixed(ratio=1)#
+g2 <-g + geom_text(data=d1 , aes(x=pred, y=obs, label=sym), size=6)
+g2
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/moisture/pred_obs_binary_3_5_spread1_PCA_corneo.pdf")#
+g2#
+dev.off()
+g <- ggplot() + #
+  geom_point(data=obs_pred4 , aes(x=pred, y=obs, color=sex), size=2) +#
+  xlim(0,70) + ylim(0,70) +#
+  labs(title="",x="Predicted TEWL", y="Observed TEWL") +#
+#  scale_color_hue(name = "Location", labels = c(A = "Akita", T ="Tokyo"), guide=TRUE ) +#
+ scale_color_hue(name = "sex", labels = c(F = "F", M ="M")) +#
+#  scale_shape_discrete(name = "Sex", labels = c( W ="Female",M = "Male"), guide=guide_legend(reverse=TRUE) ) +#
+#  scale_shape_discrete(name = "Season", labels = c(S="S", W="W" ), guide=TRUE ) +#
+#  scale_shape_discrete(name = "Location", labels = c(A = "Akita", T ="Tokyo")) +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=25, family="Arial")) +#
+  geom_abline(intercept=0,slope=1)　+ coord_fixed(ratio=1)#
+g2 <-g + geom_text(data=d1 , aes(x=pred, y=obs, label=sym), size=6)#
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/moisture/pred_obs_binary_3_5_spread1_PCA_corneo.pdf")#
+g2#
+dev.off()
+rm(list=ls())#
+#
+library(caret)#
+library(ggplot2)#
+library(dplyr)#
+#
+obs_pred4 <- read.table("~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/moisture/obs_pred_gray_nowt_spread1_PCA_skicon.txt",header=T)#
+obs_pred4["sex"] <- lapply(obs_pred4["sex"], gsub, pattern="0", replacement = "M")#
+obs_pred4["sex"] <- lapply(obs_pred4["sex"], gsub, pattern="1", replacement = "F")#
+dA <- obs_pred4[obs_pred4$ID=="D-051" & obs_pred4$season=="S",]#
+dB <- obs_pred4[obs_pred4$ID=="D-055" & obs_pred4$season=="S",]#
+dC <- obs_pred4[obs_pred4$ID=="D-110" & obs_pred4$season=="S",]#
+dD <- obs_pred4[obs_pred4$ID=="D-096" & obs_pred4$season=="W",]#
+dE <- obs_pred4[obs_pred4$ID=="D-022" & obs_pred4$season=="S",]#
+dF <- obs_pred4[obs_pred4$ID=="A-076" & obs_pred4$season=="W",]#
+d1 <- rbind(dA, dB, dC, dD, dE, dF)#
+d1$sym <- c("A", "B", "C", "D", "E", "F")
+g <- ggplot() + #
+  geom_point(data=obs_pred4 , aes(x=pred, y=obs, color=sex), size=2) +#
+#  xlim(0,70) + ylim(0,70) +#
+  labs(title="",x="Predicted TEWL", y="Observed TEWL") +#
+#  scale_color_hue(name = "Location", labels = c(A = "Akita", T ="Tokyo"), guide=TRUE ) +#
+ scale_color_hue(name = "sex", labels = c(F = "F", M ="M")) +#
+#  scale_shape_discrete(name = "Sex", labels = c( W ="Female",M = "Male"), guide=guide_legend(reverse=TRUE) ) +#
+#  scale_shape_discrete(name = "Season", labels = c(S="S", W="W" ), guide=TRUE ) +#
+#  scale_shape_discrete(name = "Location", labels = c(A = "Akita", T ="Tokyo")) +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=25, family="Arial")) +#
+  geom_abline(intercept=0,slope=1)　+ coord_fixed(ratio=1)#
+g2 <-g + geom_text(data=d1 , aes(x=pred, y=obs, label=sym), size=6)
+g2
+g <- ggplot() + #
+  geom_point(data=obs_pred4 , aes(x=pred, y=obs, color=sex), size=2) +#
+  xlim(0,350) + ylim(0,350) +#
+  labs(title="",x="Predicted TEWL", y="Observed TEWL") +#
+#  scale_color_hue(name = "Location", labels = c(A = "Akita", T ="Tokyo"), guide=TRUE ) +#
+ scale_color_hue(name = "sex", labels = c(F = "F", M ="M")) +#
+#  scale_shape_discrete(name = "Sex", labels = c( W ="Female",M = "Male"), guide=guide_legend(reverse=TRUE) ) +#
+#  scale_shape_discrete(name = "Season", labels = c(S="S", W="W" ), guide=TRUE ) +#
+#  scale_shape_discrete(name = "Location", labels = c(A = "Akita", T ="Tokyo")) +#
+  theme(panel.border = element_rect(fill = NA, size=1), #
+  	panel.background = element_rect(fill = NA,color = NA), #
+  	text=element_text(size=25, family="Arial")) +#
+  geom_abline(intercept=0,slope=1)　+ coord_fixed(ratio=1)#
+g2 <-g + geom_text(data=d1 , aes(x=pred, y=obs, label=sym), size=6)
+g2
+quartz(type="pdf", file="~/Dropbox/皮膚解析/TDA関連/TDA_2020_4/moisture/pred_obs_gray_nowt_spread1_PCA_skicon.pdf")#
+g2#
+dev.off()
+# install.packages("doParallel")#
+#install.packages("kernlab")#
+#
+rm(list=ls())#
+#
+library(doParallel)#
+cl <- makePSOCKcluster(4)#
+registerDoParallel(cl)#
+library(caret)#
+#library(ranger)#
+#library(e1071)#
+library(ggplot2)#
+#library(ranger)#
+library(dplyr)#
+library(NMF)#
+#library(e1071)#
+#library(DMwR)#
+#
+df <- read.table("/Users/keitakoseki/Dropbox/皮膚解析/TDA関連/KOSE2019/data/data_rep5.txt",header=T)#
+#colnames(df)[1:7] <- c("ID", "num", "age", "sex", "location", "season", "TEWL")#
+#rownames(df)<- paste(df$ID, df$num, sep="_")#
+df <- df[,c(-8,-9)]#
+#df <- df[,c(1:17)]#
+#df <- df[,c(1:7,12,13,17)]#
+#df1 <- df#
+#df_grid <- df[,18:ncol(df)]#
+#su <- apply(df_grid, 2, sum)#
+#df_grid <- df_grid[, su!=0]#
+#
+df_grid <- df[,8:ncol(df)]#
+su <- apply(df_grid, 2, sum)#
+df_grid <- df_grid[, su!=0]#
+sds <- apply(df_grid, MARGIN=2, sd)#
+df_grid2 <- df_grid[, sds > 10]#
+ncol(df_grid2)#
+#
+df0 <- df[,1:7]#
+#
+v <- rep("X", nrow(df0))#
+v[df0$age <= 12] <- "C"#
+v[df0$age > 12] <- "A"#
+df0$AC <- v#
+#
+df1 <- data.frame(df0, df_grid2)#
+#df1[df1$TEWL>30,]#
+#
+#pca#
+#rpca=prcomp(x=df_grid,scale=T)#
+#p <- rpca$x[,1:20]#
+#df1 <- data.frame(df[,1:7], p)#
+#summary(lm(formula = TEWL ~ PC9, data = df1))#
+#
+#nmf#
+#スケーリングなし#
+#df_grid <- df_grid[,9:ncol(df_grid)]#
+#res <- nmf(df_grid, rank = 6, seed = 123456, .options = "t")#
+#w <- basis(res)#
+#df1 <- data.frame(df[,1:7], w)#
+#
+#summary(lm(formula = TEWL ~ X1, data = df1))#
+#
+#スケーリングあり#
+#f <- function(col){#
+#  m <- max(col)#
+#  return(col/m)#
+#}#
+#df_grid2 <- apply(df_grid, 2, f)#
+#res2 <- nmf(df_grid2, rank = 6, seed = 123456, .options = "t")#
+#w <- basis(res2)#
+#df1 <- data.frame(df[,1:7], w)#
+IDs <- unique(df1$ID)
+set.seed(123456)#
+IDs2 <- sample(IDs ,length(IDs)*0.7)
+IDs2
+IDs2test_data0 <- df1[!df1$ID %in% IDs2,]
+test_data0 <- df1[!df1$ID %in% IDs2,]
+test_data0
+test_data0[1,]
+test_data0[,1]
+rm(list=ls())#
+#
+df <- read.table("~/data/RTDA_count.txt",header=T)
+df <- read.table("data/RTDA_count.txt",header=T)
+IDs <- unique(df$ID)#
+set.seed(123456)#
+IDs2 <- sample(IDs,length(IDs)*0.7)
+IDs2
+setdiff(IDs, IDs2)
+IDs3 <- setdiff(IDs, IDs2)#
+#
+write.table(IDs3,file="data/IDs2.txt",sep="\t",quote=FALSE)
+write.table(IDs3,file="data/IDs2.txt",sep="\t",quote=FALSE,row.names=F)
+write.table(IDs3,file="data/IDs2.txt",sep="\t",quote=FALSE,row.names=F)
+write.table(IDs3,file="data/IDs2.txt",sep="\t",quote=FALSE,row.names=F, col.names=F)
