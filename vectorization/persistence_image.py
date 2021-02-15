@@ -69,13 +69,6 @@ with open(output, mode="w") as fo:
 		fo.write(item+"\t")
 	fo.write("\n")
 
-with open(output, mode="a") as fo:
-	fo.write(str(ID)+"\t"+str(i)+"\t")
-	for item in img_flt:
-		fo.write(str(item)+"\t")
-	fo.write("\n")
-
-
 for num in range(1,133):
 	num = "{0:03d}".format(num)
 	ID = "A-"+ str(num)
